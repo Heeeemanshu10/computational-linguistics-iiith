@@ -1,0 +1,5 @@
+New functions
+1.The sentences in Hindi are repititive we might do something regarding it making it totally random sentence.This might go for someone to improve their grammar skills.
+2.If we can track the score of correctness that would be a great task for someone to improve 
+3.We can create the same functions in a different tab in order to make a TEST page for someone to actually know their progress.
+4.If we figure out the schema to which it is working we can add few different languages like french or german in order for someone to make sentences.
