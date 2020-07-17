@@ -18,9 +18,6 @@ var jason = {
     "key17" : ["एक बड़ी सी किताब वहाँ है","एक बड़ी सी किताब है वहाँ","बड़ी सी एक किताब वहाँ है"," बड़ी सी एक किताब है वहाँ","वहाँ है एक बड़ी सी किताब","वहाँ है बड़ी सी एक किताब"," है वहाँ एक बड़ी सी किताब","है वहाँ बड़ी सी एक किताब"]
 };
 
-
-
-
 function Introduction(){
     document.getElementById('result').innerHTML = 'A sentence can become more complex, if more than one verb is present or by joining two sentences or words using conjunctions or by some other methods.'
 }
@@ -32,8 +29,9 @@ function Objective(){
     document.getElementById('result').innerHTML = 'The objective of this experiment is to know how to form logically correct sentences from the given words'
     
 }
+var allButton;
 function Experiment(){
-    var allButton = []; 
+     
     var values = ["Select language" , "English" , "Hindi"];
      var select  = document.createElement('select');
      select.id = "language";
@@ -55,13 +53,33 @@ function Experiment(){
             for(var i=0; i<text3.length; i++){
                var button = document.createElement('button');
                button.id = "button" + i;
-               button.innerHTML = text3[i];
+               allButton = text3[i];
+               var t = document.createTextNode(text3[i])
+               button.appendChild(t);
                document.getElementById('result3').appendChild(button);
-
-            } 
-                       
-                 
-                 }else if(id_value.value == 'Hindi'){
+            // button.addEventListener("click", function() {
+            //     const k = allButton
+            //     var btn = document.getElementById("button"+i);
+            //          console.log(k);
+            // }) 
+            }
+            $("button").on("click", function(){
+                document.getElementById("result4").innerHTML = "Formed Sentence";
+                document.getElementById("result5").innerHTML = "(after selecting words):"
+                var word = $(this).text()+" ";
+                if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence" && $(this).text() !== "Get Correct Sentence" && $(this).text() !== "Hide the correct Sentence" && $(this).text() !== "Get Answers") {
+                    var wordnode = document.createTextNode(word);
+                    $(this).hide();
+                    document.getElementById("result6").appendChild(wordnode);
+                    
+                    
+                }       
+        })
+                var reform = document.createElement('button');
+                reform.innerHTML = "Reform the sentence";
+                document.getElementById('result7').appendChild(reform);
+            
+       }   else if(id_value.value == 'Hindi'){
                     document.getElementById('result1').innerHTML = 'Form a sentence(Declarative or interrogative or any type) from the given words';
                     document.getElementById('result2').innerHTML = '(Select the buttons in proper order)';
                     
@@ -76,16 +94,13 @@ function Experiment(){
                       button.id = "button" + i;
                       button.innerHTML = text3[i];
                       document.getElementById('result3').appendChild(button);
+                     
        
                    } 
                  }
                 
              }
-
-             
-
-         
-      
+     
      for(const val of values){
          var option = document.createElement('option');
          option.value = val;
@@ -98,7 +113,7 @@ function Experiment(){
       
         document.getElementById('container').appendChild(select);
      
-}
+    }
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
   
@@ -118,4 +133,3 @@ function shuffle(array) {
     return array;
   }
    
-    
