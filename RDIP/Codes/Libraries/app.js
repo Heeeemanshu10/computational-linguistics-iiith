@@ -57,11 +57,7 @@ function Experiment(){
                var t = document.createTextNode(text3[i])
                button.appendChild(t);
                document.getElementById('result3').appendChild(button);
-            // button.addEventListener("click", function() {
-            //     const k = allButton
-            //     var btn = document.getElementById("button"+i);
-            //          console.log(k);
-            // }) 
+            
             }
             $("button").on("click", function(){
                 document.getElementById("result4").innerHTML = "Formed Sentence";
@@ -73,12 +69,42 @@ function Experiment(){
                     document.getElementById("result6").appendChild(wordnode);
                     
                     
-                }       
+                }  
+               
         })
                 var reform = document.createElement('button');
+                reform.id = "reform";
                 reform.innerHTML = "Reform the sentence";
                 document.getElementById('result7').appendChild(reform);
-            
+                reform.onclick = function(){
+                    document.getElementById('result6').innerHTML = "";
+                    document.getElementById('result5').innerHTML = "";
+                    document.getElementById('result4').innerHTML = "";
+                     
+            for(var i=0; i<text3.length; i++){
+                var button = document.createElement('button');
+                button.id = "button" + i;
+                allButton = text3[i];
+                var t = document.createTextNode(text3[i])
+                button.appendChild(t);
+                document.getElementById('result3').appendChild(button);
+             
+             }
+             $("button").on("click", function(){
+                document.getElementById("result4").innerHTML = "Formed Sentence";
+                document.getElementById("result5").innerHTML = "(after selecting words):"
+                var word = $(this).text()+" ";
+                if($(this).text() !== "Re-form the sentence" && $(this).text() !== "Check the correctness of this sentence" && $(this).text() !== "Get Correct Sentence" && $(this).text() !== "Hide the correct Sentence" && $(this).text() !== "Get Answers") {
+                    var wordnode = document.createTextNode(word);
+                    $(this).hide();
+                    document.getElementById("result6").appendChild(wordnode);
+                    
+                    
+                }  
+               
+        })
+                } 
+                                
        }   else if(id_value.value == 'Hindi'){
                     document.getElementById('result1').innerHTML = 'Form a sentence(Declarative or interrogative or any type) from the given words';
                     document.getElementById('result2').innerHTML = '(Select the buttons in proper order)';
