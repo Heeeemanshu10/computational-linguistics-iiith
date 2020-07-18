@@ -30,6 +30,7 @@ function Objective(){
     
 }
 var allButton;
+var count;
 function Experiment(){
      
     var values = ["Select language" , "English" , "Hindi"];
@@ -49,8 +50,9 @@ function Experiment(){
              var text2 = text1[0];
              var text3 = text2.split(" ");
              shuffle(text3);
-             
-            for(var i=0; i<text3.length; i++){
+             count = text3.length;
+            
+             for(var i=0; i<text3.length; i++){
                var button = document.createElement('button');
                button.id = "button" + i;
                allButton = text3[i];
@@ -59,6 +61,7 @@ function Experiment(){
                document.getElementById('result3').appendChild(button);
             
             }
+            
             $("button").on("click", function(){
                 document.getElementById("result4").innerHTML = "Formed Sentence";
                 document.getElementById("result5").innerHTML = "(after selecting words):"
@@ -67,8 +70,15 @@ function Experiment(){
                     var wordnode = document.createTextNode(word);
                     $(this).hide();
                     document.getElementById("result6").appendChild(wordnode);
-                    
-                    
+                    count--;
+                       if(count === 0)
+                       {
+                           var checkCorrectness = document.createElement('button');
+                           checkCorrectness.id = "checkcorrectness";
+                           checkCorrectness.innerHTML = "Check the correctness";
+                           document.getElementById('result8').appendChild(checkCorrectness);
+                       }
+                   
                 }  
                
         })
@@ -76,10 +86,12 @@ function Experiment(){
                 reform.id = "reform";
                 reform.innerHTML = "Reform the sentence";
                 document.getElementById('result7').appendChild(reform);
+                
                 reform.onclick = function(){
                     document.getElementById('result6').innerHTML = "";
                     document.getElementById('result5').innerHTML = "";
                     document.getElementById('result4').innerHTML = "";
+                    shuffle(text3);
                      
             for(var i=0; i<text3.length; i++){
                 var button = document.createElement('button');
@@ -89,7 +101,8 @@ function Experiment(){
                 button.appendChild(t);
                 document.getElementById('result3').appendChild(button);
              
-             }
+             } 
+             
              $("button").on("click", function(){
                 document.getElementById("result4").innerHTML = "Formed Sentence";
                 document.getElementById("result5").innerHTML = "(after selecting words):"
@@ -102,8 +115,9 @@ function Experiment(){
                     
                 }  
                
-        })
-                } 
+        })     
+                }
+                
                                 
        }   else if(id_value.value == 'Hindi'){
                     document.getElementById('result1').innerHTML = 'Form a sentence(Declarative or interrogative or any type) from the given words';
@@ -159,3 +173,4 @@ function shuffle(array) {
     return array;
   }
    
+
