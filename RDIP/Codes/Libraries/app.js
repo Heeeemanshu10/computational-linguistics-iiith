@@ -100,6 +100,12 @@ function Experiment(){
                                 var getcorrect = document.createElement('button');
                                 getcorrect.innerHTML = 'Correct statement';
                                 document.getElementById('result10').appendChild(getcorrect);
+                                getcorrect.onclick = function(){
+                                    for(var b in text1)
+                                    {
+                                    document.getElementById('result11').innerHTML = text1[b];
+                                    }
+                                }
                             }
                                 
                             }
