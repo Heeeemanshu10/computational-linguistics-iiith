@@ -31,6 +31,7 @@ function Objective(){
 }
 var allButton;
 var count;
+var original = "";
 function Experiment(){
      
     var values = ["Select language" , "English" , "Hindi"];
@@ -47,7 +48,9 @@ function Experiment(){
              
              var rand = Math.floor((Math.random() * 9) + 1);
              var text1 = jason["key" + rand];
-             var text2 = text1[0];
+             for(var a in text1){
+             var text2 = text1[a];
+             }
              var text3 = text2.split(" ");
              shuffle(text3);
              count = text3.length;
@@ -77,10 +80,35 @@ function Experiment(){
                            checkCorrectness.id = "checkcorrectness";
                            checkCorrectness.innerHTML = "Check the correctness";
                            document.getElementById('result8').appendChild(checkCorrectness);
+                           checkCorrectness.onclick = function(){
+                               var str = document.getElementById('result6').innerHTML;
+                            for(var a in text1)
+                                {
+                                    if(text1[a] === str)
+                                {
+                                    var right = 'RIGHT ANSWER';
+                                    document.getElementById('result9').innerHTML = right;
+                                }
+                                else{
+                                    var wrong = 'WRONG ANSWER';
+                                    document.getElementById('result9').innerHTML = wrong;
+                                }
+                                }
+                            // if(document.getElementById('result9').innerHTML === wrong)
+                            // {
+                            //     var getcorrect = document.createElement('button');
+                            //     getcorrect.innerHTML = 'Correct statement';
+                            //     getcorrect.id = 'correct';
+                            //     getcorrect.onclick = function(){
+                            //         console.log('hello');
+                            //     }
+                                
+                            }
+                            }
+                           
                        }
                    
-                }  
-               
+                        
         })
                 var reform = document.createElement('button');
                 reform.id = "reform";
