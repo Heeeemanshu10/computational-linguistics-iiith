@@ -94,14 +94,13 @@ function Experiment(){
                                     document.getElementById('result9').innerHTML = wrong;
                                 }
                                 }
-                            // if(document.getElementById('result9').innerHTML === wrong)
-                            // {
-                            //     var getcorrect = document.createElement('button');
-                            //     getcorrect.innerHTML = 'Correct statement';
-                            //     getcorrect.id = 'correct';
-                            //     getcorrect.onclick = function(){
-                            //         console.log('hello');
-                            //     }
+                            
+                            if(document.getElementById('result9').innerHTML === wrong)
+                            {
+                                var getcorrect = document.createElement('button');
+                                getcorrect.innerHTML = 'Correct statement';
+                                document.getElementById('result10').appendChild(getcorrect);
+                            }
                                 
                             }
                             }
